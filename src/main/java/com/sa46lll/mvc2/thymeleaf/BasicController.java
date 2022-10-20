@@ -58,6 +58,13 @@ public class BasicController {
         return "basic/date";
     }
 
+    @GetMapping("/link")
+    public String link(Model model) {
+        model.addAttribute("param1", "link1");
+        model.addAttribute("param2", "link2");
+        return "basic/link";
+    }
+
     @Getter
     static class User {
         private String username;
