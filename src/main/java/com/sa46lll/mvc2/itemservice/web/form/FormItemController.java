@@ -2,7 +2,9 @@ package com.sa46lll.mvc2.itemservice.web.form;
 
 import com.sa46lll.mvc2.itemservice.domain.item.Item;
 import com.sa46lll.mvc2.itemservice.domain.item.ItemRepository;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class FormItemController {
 
     private final ItemRepository itemRepository;
+
+    @ModelAttribute("regions")
+    public Map<String, String> regions() {
+        Map<String, String> regions = new LinkedHashMap<>();
+        regions.put("SEOUL", "서울");
+        regions.put("BUSAN", "부산");
+        regions.put("JEJU", "제주");
+        return regions;
+    }
 
     @GetMapping
     public String items(Model model) {
@@ -63,6 +74,5 @@ public class FormItemController {
         itemRepository.update(itemId, item);
         return "redirect:/form/items/{itemId}";
     }
-
 }
 
