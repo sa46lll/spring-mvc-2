@@ -1,5 +1,8 @@
 package com.sa46lll.mvc2.itemservice.domain.item;
 
+import lombok.Getter;
+
+@Getter
 public enum ItemType {
     BOOK("도서"),
     FOOD("음식"),
